@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customers</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='table_style.css') }}"
+    />
+    <style>
+      thead {
+        background-color: #967ed4;
+      }
+      tbody {
+        background-color: #e6b1d0;
+      }
+    </style>
+  </head>
+  <body
+    style="background-image: linear-gradient(to top, #e86fec 0%, #2b233f 100%)"
+  >
+    <a href="{{ url_for('index') }}">Home</a>
+
+    <div class="categories-table">
+      <h1>All Customers</h1>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Customer Code</th>
+            <th>Office Staff Code</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Arrearage Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in customers %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table">
+      <h2>Make Report of Customer</h2>
+      <form action="/search_orders" method="POST">
+        <label for="">Customer ID</label>
+        <input type="text" name="customer_code" />
+        <button
+          type="submit"
+          style="
+            background-color: #a388a0;
+            color: #ffffff;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+          "
+        >
+          Make report
+        </button>
+      </form>
+      {% if orders %}
+      <h2>Information of Orders of Customers</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Order Code</th>
+            <th>Operational Staff Code</th>
+            <th>Operational Staff Name</th>
+            <th>Category Code</th>
+            <th>Category Name</th>
+            <th>Category Color</th>
+            <th>Bolt Code</th>
+            <th>Total Price</th>
+            <th>Order Status</th>
+            <th>Cancelled Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in orders %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>{{ row[6] }}</td>
+            <td>{{ row[7] }}</td>
+            <td>{{ row[8] }}</td>
+            <td>{{ row[9] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {%endif%}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomePage</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index_style.css') }}"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Assignment 2</a>
+      <nav class="nav-items">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <div class="intro">
+        <h1>HCMUT Fabric Agency</h1>
+        <p>Welcome to our Fabric Agency Database website!.</p>
+        <button>Learn More</button>
+      </div>
+      <div class="achievements">
+        <div class="work">
+          <a
+            href="./categories.html"
+            target="_blank"
+            style="background-color: bisque"
+          >
+            <i class="fas fa-atom"></i>
+            <p class="work-heading">Categories</p>
+          </a>
+          <p class="work-text">
+            Discover our diverse range of fabric categories, each tailored to
+            meet your specific needs. Browse through our collection to find the
+            perfect fit for your projects.
+          </p>
+        </div>
+        <div class="work">
+          <a
+            href="./suppliers.html"
+            target="_blank"
+            style="background-color: #bbddc5"
+          >
+            <i class="fas fa-skiing"></i>
+            <p class="work-heading">Suppliers</p>
+          </a>
+          <p class="work-text">
+            Meet our trusted suppliers who provide top-quality materials to
+            support our operations. Explore their information to know more about
+            our partnerships.
+          </p>
+        </div>
+        <div class="work">
+          <a
+            href="./customers.html"
+            target="_blank"
+            style="background-color: #b2adcf"
+          >
+            <i class="fas fa-ethernet"></i>
+            <p class="work-heading">Customers</p>
+          </a>
+          <p class="work-text">
+            We value our customers and strive to offer the best services. Browse
+            through the customer details to understand the relationships we
+            cherish.
+          </p>
+        </div>
+      </div>
+      <div class="about-me">
+        <div class="about-me-text">
+          <h2 style="margin-left: 20%">Created By</h2>
+          <table
+            border="1"
+            style="
+              width: 100%;
+              text-align: center;
+              border-collapse: collapse;
+              margin-left: 20%;
+            "
+          >
+            <thead>
+              <tr>
+                <th style="background-color: #999595; padding: 8px">Name</th>
+                <th style="background-color: #999595; padding: 8px">Role</th>
+                <th style="background-color: #999595; padding: 8px">
+                  Contribution
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 8px">Member 1</td>
+                <td style="padding: 8px">Database Designer</td>
+                <td style="padding: 8px">
+                  Designed the database schema and implemented SQL queries.
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 8px">Member 2</td>
+                <td style="padding: 8px">Backend Developer</td>
+                <td style="padding: 8px">
+                  Developed Flask routes and handled server-side logic.
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 8px">Member 3</td>
+                <td style="padding: 8px">Frontend Developer</td>
+                <td style="padding: 8px">
+                  Designed the UI and integrated it with the backend.
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 8px">Member 4</td>
+                <td style="padding: 8px">Tester</td>
+                <td style="padding: 8px">
+                  Tested the application for bugs and ensured smooth
+                  functionality.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <img
+          src="https://toplist.vn/images/800px/dai-hoc-bach-khoa-tphcm-995562.jpg"
+          alt="me"
+          style="
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            margin-top: 20px;
+            margin-right: 10%;
+          "
+        />
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="copy">© 2022 Developer</div>
+      <div class="bottom-links">
+        <div class="links">
+          <span>More Info</span>
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="links">
+          <span>Social Links</span>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suppliers</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='table_style.css') }}"
+    />
+    <style>
+      th {
+        background-color: #3bc59c;
+      }
+      tbody {
+        background-color: #c2f5d3;
+      }
+    </style>
+  </head>
+  <body
+    style="background-image: linear-gradient(to top, #0d2413 0%, #c2f5d3 100%)"
+  >
+    <a href="{{ url_for('index') }}">Home</a>
+
+    <div class="categories-table">
+      <h1>Suppliers</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Supplier Code</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Bank Account</th>
+            <th>Tax Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in suppliers %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table">
+      <h2>Add new suppliers</h2>
+      <form action="/add_suppliers" method="post">
+        <div>
+          <label for="supp_code">Supplier Code:</label>
+          <input type="text" id="supp_code" name="supp_code" />
+        </div>
+        <div>
+          <label for="supp_name">Name:</label>
+          <input type="text" id="supp_name" name="supp_name" />
+        </div>
+        <div>
+          <label for="supp_address">Address:</label>
+          <input type="text" id="supp_address" name="supp_address" />
+        </div>
+        <div>
+          <label for="supp_bank">Bank Account:</label>
+          <input type="text" id="supp_bank" name="supp_bank" />
+        </div>
+        <div>
+          <label for="supp_tax">Tax Code:</label>
+          <input type="text" id="supp_tax" name="supp_tax" />
+        </div>
+        <button
+          type="submit"
+          style="
+            background-color: #123d10;
+            color: #ffffff;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+          "
+        >
+          Add Suppliers
+        </button>
+      </form>
+    </div>
+    <div class="categories-table">
+      <h2>Search All Categories</h2>
+      <form action="/search_all_categories" method="post">
+        <label for="">Supplier Code</label>
+        <input type="text" name="supplier_code" />
+        <button
+          type="submit"
+          style="
+            background-color: #123d10;
+            color: #ffffff;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+          "
+        >
+          Search all categories
+        </button>
+      </form>
+      {% if categories %}
+      <h2>Categories Provided by Supplier</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Category Code</th>
+            <th>Category Name</th>
+            <th>Color</th>
+            <th>Current Price</th>
+            <th>Price Date</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in categories %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+  </body>
+</html>

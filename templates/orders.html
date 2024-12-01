@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <a href="{{ url_for('index') }}">Home</a>
+
+    <h1>All orders</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Order Code</th>
+          <th>Customer Code</th>
+          <th>Operational Staff Code</th>
+          <th>Total Price</th>
+          <th>Order Status</th>
+          <th>Cancelled Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in orders %}
+        <tr>
+          <td>{{ row[0] }}</td>
+          <td>{{ row[1] }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+          <td>{{ row[4] }}</td>
+          <td>{{ row[5] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

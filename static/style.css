@@ -1,0 +1,27 @@
+th,
+td {
+  text-align: center; /* Centers text horizontally */
+  padding: 8px; /* Adds padding for better spacing */
+}
+th {
+  background-color: #e75d5d; /* Optional: Adds background color to table headers */
+}
+.categories-table {
+  border: 2px solid #333; /* Border for the rectangle */
+  padding: 15px; /* Space inside the border */
+  margin-bottom: 20px; /* Space below the container */
+  border-radius: 8px; /* Rounded corners (optional) */
+  background-color: #fff; /* Background color (optional) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow (optional) */
+  text-align: center; /* Center-align content within the container */
+  display: inline-block;
+}
+
+body {
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Make the body take up the full viewport height */
+  margin: 0; /* Remove default margin */
+}

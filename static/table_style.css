@@ -1,0 +1,46 @@
+th,
+td {
+  text-align: center; /* Centers text horizontally */
+  padding: 8px; /* Adds padding for better spacing */
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.categories-table {
+  border: 2px solid #333; /* Border for the rectangle */
+  padding: 15px; /* Space inside the border */
+  margin-bottom: 20px; /* Space below the container */
+  border-radius: 8px; /* Rounded corners (optional) */
+  background-color: #fff; /* Background color (optional) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow (optional) */
+  text-align: center; /* Center-align content within the container */
+  display: inline-block;
+}
+
+.categories-table form div {
+  display: flex;
+  align-items: center; /* Đảm bảo các phần tử căn giữa theo chiều dọc */
+  gap: 10px; /* Khoảng cách giữa label và input */
+  margin-bottom: 10px; /* Khoảng cách giữa các dòng */
+}
+
+.categories-table form label {
+  width: 150px; /* Đặt chiều rộng cố định cho label để chúng thẳng hàng */
+  text-align: right; /* Căn phải label để gần với input */
+}
+
+.categories-table form input {
+  width: 300px; /* Đặt chiều rộng cố định cho input */
+  padding: 5px; /* Thêm padding để input trông đẹp hơn */
+}
+
+body {
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Make the body take up the full viewport height */
+  margin: 0; /* Remove default margin */
+}

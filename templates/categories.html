@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='table_style.css') }}"
+    />
+    <style>
+      thead {
+        background-color: #e9bb23;
+      }
+      tbody {
+        background-color: #dfce99;
+      }
+    </style>
+  </head>
+  <body
+    style="background-image: linear-gradient(to top, #5d4660 0%, #f7eec7 100%)"
+  >
+    <a href="{{ url_for('index') }}">Home</a>
+    <div class="categories-table">
+      <h1 class="table-tiltle">Categories</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Category Code</th>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Current Price</th>
+            <th>Price Date</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in categories %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table">
+      <h2>Search Materials Purchasing</h2>
+      <form action="/search_materials" method="POST">
+        <label for="">Category Code</label>
+        <input type="text" name="category_code" />
+        <button
+          type="submit"
+          style="
+            background-color: #b2adcf;
+            color: #000;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+          "
+        >
+          Search material
+        </button>
+      </form>
+      {% if materials %}
+      <h2>Materials Information</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Supplier Name</th>
+            <th>Supplier Phone</th>
+            <th>Material</th>
+            <th>Color</th>
+            <th>Quantity</th>
+            <th>Purchase Price</th>
+            <th>Import Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for row in materials%}
+          <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+            <td>{{row[6]}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+
+    <div class="categories-table">
+      <h1>Bolts</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Bolt Code</th>
+            <th>Category Code</th>
+            <th>Length</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in bolts %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
