@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Others Information</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='table_style.css') }}"
+    />
+    <style>
+      thead {
+        background-color: #4593d2;
+      }
+      tbody {
+        background-color: #63b3eb;
+      }
+    </style>
+  </head>
+  <body
+    style="background-image: linear-gradient(to top, #a6c8df 0%, #091e49 100%)"
+  >
+    <div class="categories-table" style="background-color: #b2ecef">
+      <h1 class="table-tiltle">Orders</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Order Code</th>
+            <th>Customer Code</th>
+            <th>Operational Staff Code</th>
+            <th>Total Price</th>
+            <th>Status</th>
+            <th>Cancelled Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in orders %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table" style="background-color: #b2ecef">
+      <h1 class="table-tiltle">Contains</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Order Code</th>
+            <th>Bolt Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in contains %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table" style="background-color: #b2ecef">
+      <h1 class="table-tiltle">Bolts</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Bolt Code</th>
+            <th>Category Code</th>
+            <th>Length</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in bolts %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table" style="background-color: #b2ecef">
+      <h1 class="table-tiltle">Payments</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Order Code</th>
+            <th>Customer Code</th>
+            <th>Amount</th>
+            <th>Pay Date</th>
+            <th>Arrearage</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in payments %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table" style="background-color: #b2ecef">
+      <h1 class="table-tiltle">Provides</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Category Code</th>
+            <th>Supplier Code</th>
+            <th>Quantity</th>
+            <th>Purchase Price</th>
+            <th>Import Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in provides %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

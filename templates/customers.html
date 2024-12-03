@@ -22,7 +22,7 @@
   >
     <a href="{{ url_for('index') }}">Home</a>
 
-    <div class="categories-table">
+    <div class="categories-table" style="background-color: #f0c4e9">
       <h1>All Customers</h1>
       <table border="1">
         <thead>
@@ -48,10 +48,30 @@
       </table>
     </div>
 
-    <div class="categories-table">
+    <div class="categories-table" style="background-color: #f0c4e9">
+      <h1>Phone Numbers</h1>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Customer Code</th>
+            <th>Phone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in customers_phone %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table" style="background-color: #f0c4e9">
       <h2>Make Report of Customer</h2>
       <form action="/search_orders" method="POST">
-        <label for="">Customer ID</label>
+        <label for="" style="font-weight: bold">Customer ID</label>
         <input type="text" name="customer_code" />
         <button
           type="submit"

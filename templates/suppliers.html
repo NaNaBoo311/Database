@@ -22,13 +22,14 @@
   >
     <a href="{{ url_for('index') }}">Home</a>
 
-    <div class="categories-table">
-      <h1>Suppliers</h1>
+    <div class="categories-table" style="background-color: #325c4f">
+      <h1 style="color: #ffffff">Suppliers</h1>
       <table>
         <thead>
           <tr>
             <th>Supplier Code</th>
             <th>Name</th>
+            <th>Partner Staff Code</th>
             <th>Address</th>
             <th>Bank Account</th>
             <th>Tax Code</th>
@@ -42,33 +43,62 @@
             <td>{{ row[2] }}</td>
             <td>{{ row[3] }}</td>
             <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
 
-    <div class="categories-table">
-      <h2>Add new suppliers</h2>
+    <div class="categories-table" style="background-color: #325c4f">
+      <h1 style="color: #ffffff">Phone Number</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Supplier Code</th>
+            <th>Phone Num</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in suppliers_phone %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="categories-table" style="background-color: #c2f5d3">
+      <h2 style="font-weight: bold">Add new suppliers</h2>
       <form action="/add_suppliers" method="post">
         <div>
-          <label for="supp_code">Supplier Code:</label>
+          <label for="supp_code" style="font-weight: bold"
+            >Supplier Code:</label
+          >
           <input type="text" id="supp_code" name="supp_code" />
         </div>
         <div>
-          <label for="supp_name">Name:</label>
+          <label for="supp_name" style="font-weight: bold">Name:</label>
           <input type="text" id="supp_name" name="supp_name" />
         </div>
         <div>
-          <label for="supp_address">Address:</label>
+          <label for="prt_code" style="font-weight: bold"
+            >Partner Staff Code:</label
+          >
+          <input type="text" id="prt_code" name="prt_code" />
+        </div>
+        <div>
+          <label for="supp_address" style="font-weight: bold">Address:</label>
           <input type="text" id="supp_address" name="supp_address" />
         </div>
         <div>
-          <label for="supp_bank">Bank Account:</label>
+          <label for="supp_bank" style="font-weight: bold">Bank Account:</label>
           <input type="text" id="supp_bank" name="supp_bank" />
         </div>
         <div>
-          <label for="supp_tax">Tax Code:</label>
+          <label for="supp_tax" style="font-weight: bold">Tax Code:</label>
           <input type="text" id="supp_tax" name="supp_tax" />
         </div>
         <button
@@ -89,10 +119,12 @@
         </button>
       </form>
     </div>
-    <div class="categories-table">
-      <h2>Search All Categories</h2>
+    <div class="categories-table" style="background-color: #325c4f">
+      <h1 style="color: #ffffff">Search Provides</h1>
       <form action="/search_all_categories" method="post">
-        <label for="">Supplier Code</label>
+        <label for="" style="color: #ffffff; font-weight: bold"
+          >Supplier Code</label
+        >
         <input type="text" name="supplier_code" />
         <button
           type="submit"
@@ -112,7 +144,7 @@
         </button>
       </form>
       {% if categories %}
-      <h2>Categories Provided by Supplier</h2>
+      <h2 style="color: #ffffff">Categories Provided</h2>
       <table>
         <thead>
           <tr>
