@@ -1,4 +1,8 @@
-DROP TABLE categories CASCADE CONSTRAINT;
+
+CREATE TABLE categories_code (
+    CATE_CODE VARCHAR2(10) PRIMARY KEY
+);
+
 CREATE TABLE categories (
     CATE_CODE   VARCHAR2(10), -- Unique code for the category
     CATE_NAME   VARCHAR2(100) NOT NULL,  -- Name of the fabric category
@@ -7,13 +11,14 @@ CREATE TABLE categories (
     PRICE_DATE      DATE NOT NULL,           -- Date when the price was last updated
     IMPORT_DATE     DATE NOT NULL,
     PRIMARY KEY (CATE_CODE, PRICE_DATE),
+    CONSTRAINT FK_CATE_CODE FOREIGN KEY (CATE_CODE) REFERENCES categories_code(CATE_CODE),
     QUANTITY        INTEGER NOT NULL   -- Quantity available
 );
 
 CREATE TABLE bolts (
     BOLT_CODE VARCHAR(20) PRIMARY KEY,
     CATE_CODE VARCHAR(20),
-    CONSTRAINT FK_CATE FOREIGN KEY (CATE_CODE) REFERENCES categories(CATE_CODE),
+    CONSTRAINT FK_BOLT_CATE FOREIGN KEY (CATE_CODE) REFERENCES categories_code(CATE_CODE),
     LENGTH NUMBER(10,2)
 );
 

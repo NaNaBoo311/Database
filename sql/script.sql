@@ -79,6 +79,15 @@ INSERT INTO suppliers_phone (SUPPLIER_CODE, PHONE_NUM) VALUES ('SUP008', '+1-555
 INSERT INTO suppliers_phone (SUPPLIER_CODE, PHONE_NUM) VALUES ('SUP009', '+1-555-1133');
 INSERT INTO suppliers_phone (SUPPLIER_CODE, PHONE_NUM) VALUES ('SUP010', '+1-555-2233');
 
+-----------------------CATEGORY CODE-------------------------------
+INSERT INTO categories_code (CATE_CODE) VALUES ('CATE001');
+INSERT INTO categories_code (CATE_CODE) VALUES ('CATE002');
+INSERT INTO categories_code (CATE_CODE) VALUES ('CATE003');
+INSERT INTO categories_code (CATE_CODE) VALUES ('CATE004');
+INSERT INTO categories_code (CATE_CODE) VALUES ('CATE005');
+INSERT INTO categories_code (CATE_CODE) VALUES ('CATE006');
+INSERT INTO categories_code (CATE_CODE) VALUES ('CATE007');
+
 
 -----------------------CATEGORY------------------------------------------
 INSERT INTO categories (CATE_CODE, CATE_NAME, COLOR, CURRENT_PRICE, PRICE_DATE, IMPORT_DATE, QUANTITY) VALUES ('CATE001', 'Silk', 'Red', 50.75, TO_DATE('30-1-2021', 'DD-MM-YYYY'), TO_DATE('15-01-2021', 'DD-MM-YYYY'), 5);
