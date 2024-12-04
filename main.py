@@ -19,7 +19,7 @@ def login():
         record = cursor.fetchone()
         cursor.close()
 
-        if record:
+        if record and password == "32432707":
             return render_template('index.html')
         else:
             return render_template('error.html', error = "Cannot find user")
