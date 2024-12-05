@@ -9,20 +9,31 @@ connection = cx_Oracle.connect("system/32432707@localhost:1521/xe")
 def index():
     return render_template('login.html')
 
-@app.route('/login', methods = ['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
-    cursor = connection.cursor()
+    error = None
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        cursor.execute("""SELECT username from dba_users WHERE username=:1""", (username,))
-        record = cursor.fetchone()
-        cursor.close()
+    
+        try:
 
-        if record and password == "32432707":
-            return render_template('index.html')
-        else:
-            return render_template('error.html', error = "Cannot find user")
+            with oracledb.connect(user=username, password=password, dsn="localhost/xe"):
+
+                session['username'] = username
+                return index()
+        except oracledb.DatabaseError as e:
+            error_message = str(e)
+            print("Login failed:", error_message)
+            error = "Invalid username or password. Please try again."
+
+    return render_template('login.html', error=error)
+
+
+@app.route('/logout') 
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
 
 
 #----------------------CATEGORIES & BOLTS----------------------------
