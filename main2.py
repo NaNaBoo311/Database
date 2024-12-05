@@ -20,7 +20,6 @@ def login():
         password = request.form['password']
     
         try:
-
             with oracledb.connect(user=username, password=password, dsn="localhost/xe"):
 
                 session['username'] = username
@@ -30,7 +29,7 @@ def login():
             print("Login failed:", error_message)
             error = "Invalid username or password. Please try again."
 
-    return render_template('login.html', error=error)
+    return render_template('index.html', error=error)
 
 
 @app.route('/logout') 
@@ -45,11 +44,14 @@ def logout():
 #----------------------CATEGORIES & BOLTS----------------------------
 @app.route('/categories.html')
 def categories():
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM categories")
-    data = cursor.fetchall()
-    cursor.close()
-    return render_template('categories.html', categories=data)
+    if overall_user in ['C##MANAGER']:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM categories")
+        data = cursor.fetchall()
+        cursor.close()
+        return render_template('categories.html', categories=data)
+    else:
+        return render_template('error.html', error = "You don't have any access!")
 
 @app.route('/add_category', methods=['POST'])
 def add_category():
@@ -224,13 +226,17 @@ def orders():
 #-----------------------CUSTOMERS-----------------------------
 @app.route('/customers.html')
 def customers():
-    cursor = connection.cursor()
-    cursor.execute("SELECT * from customers")
-    data = cursor.fetchall()
-    cursor.execute("SELECT * from customers_phone")
-    customers_phone = cursor.fetchall()
-    cursor.close()
-    return render_template('customers.html', customers = data, customers_phone = customers_phone)
+    if overall_user in ["C##MANAGER"]:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * from customers")
+        data = cursor.fetchall()
+        cursor.execute("SELECT * from customers_phone")
+        customers_phone = cursor.fetchall()
+        cursor.close()
+        return render_template('customers.html', customers = data, customers_phone = customers_phone)
+    else:
+        return render_template('error.html', error = "You don't have any access!")
+
 
 @app.route('/search_orders', methods = ['POST'])
 def search_orders():
@@ -287,21 +293,24 @@ def search_orders():
 #-----------------------EMPLOYEES-----------------------------
 @app.route('/employees.html')
 def employees():
-    cursor = connection.cursor()
-    # OFFICE STAFFS
-    cursor.execute("SELECT * from office_staffs")
-    office_staffs = cursor.fetchall()
-    # OPERATIONAL STAFFS
-    cursor.execute("SELECT * from operational_staffs")
-    operational_staffs = cursor.fetchall()
-    # PARTNER STAFFS
-    cursor.execute("SELECT * from partner_staffs")
-    partner_staffs = cursor.fetchall()
-    # MANAGERS
-    cursor.execute("SELECT * from managers")
-    managers = cursor.fetchall()
-    cursor.close()
-    return render_template('employees.html', office_staffs = office_staffs, operational_staffs = operational_staffs, partner_staffs = partner_staffs, managers = managers)
+    if overall_user in ["C##MANAGER"]:
+        cursor = connection.cursor()
+        # OFFICE STAFFS
+        cursor.execute("SELECT * from office_staffs")
+        office_staffs = cursor.fetchall()
+        # OPERATIONAL STAFFS
+        cursor.execute("SELECT * from operational_staffs")
+        operational_staffs = cursor.fetchall()
+        # PARTNER STAFFS
+        cursor.execute("SELECT * from partner_staffs")
+        partner_staffs = cursor.fetchall()
+        # MANAGERS
+        cursor.execute("SELECT * from managers")
+        managers = cursor.fetchall()
+        cursor.close()
+        return render_template('employees.html', office_staffs = office_staffs, operational_staffs = operational_staffs, partner_staffs = partner_staffs, managers = managers)
+    else:
+        return render_template('error.html', error = "You don't have any access!")
 
 
 #------------------------OTHERS--------------------------------
