@@ -1,4 +1,4 @@
-
+CREATE INDEX idx_orders_cus_code ON orders(CUS_CODE);  
 CREATE TABLE categories_code (
     CATE_CODE VARCHAR2(10) PRIMARY KEY
 );
