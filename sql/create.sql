@@ -1,5 +1,6 @@
 CREATE INDEX idx_orders_cus_code ON orders(CUS_CODE);  
-create user C##Partner identified by P123;
+create user C##PARTNER_STAFF identified by P123;
+GRANT SELECT, INSERT, UPDATE on suppliers TO C##PARTNER_STAFF;
 CREATE TABLE categories_code (
     CATE_CODE VARCHAR2(10) PRIMARY KEY
 );
