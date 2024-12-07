@@ -32,33 +32,31 @@ BEGIN
 END;  --b
 /
 
-DECLARE 
-    supplier_id VARCHAR(20) := 'S001';
-    purchase_data SYS_REFCURSOR;
-    category_code provides.CATE_CODE%TYPE;
-    quantity provides.QUANTITY%TYPE;
-    price_per_unit provides.PURCHASE_PRICE%TYPE;
-    total_price provides.PURCHASE_PRICE%TYPE;
-    purchase_date provides.IMPORT_DATE%TYPE;
+DECLARE
+    purchase_cursor SYS_REFCURSOR;
+    category_code VARCHAR2(50);
+    quantity NUMBER;
+    price_per_unit NUMBER;
+    total_price NUMBER;
+    purchase_date DATE;
+    supplier_code VARCHAR2(50);
 BEGIN
-    --Call the function---
-    purchase_data := total_purchase_price(supplier_id);
-    --Fetch data----
+    -- Call the function
+    purchase_cursor := total_purchase_price('SUP001');
+    
+    -- Fetch the cursor data
     LOOP
-        FETCH purchase_data INTO category_code, quantity, price_per_unit, total_price, purchase_date;
-        EXIT WHEN purchase_data%NOTFOUND;
---        DBMS_OUTPUT.PUT_LINE('CATE_CODE: ' || category_code
---                            || ', QUANTITY: ' || quantity || 
---                            ', UNIT PRICE: ' || price_per_unit ||
---                            ', TOTAL PRICE: ' || total_price ||
---                            ', DATE: ' || purchase_date);
-        
-        DBMS_OUTPUT.PUT_LINE('SUPPLIER: ' || supplier_id || ', TOTAL PRICE: ' || total_price);
-        
+        FETCH purchase_cursor INTO category_code, quantity, price_per_unit, total_price, purchase_date, supplier_code;
+        EXIT WHEN purchase_cursor%NOTFOUND;
+
+        -- Process the data (example output)
+        DBMS_OUTPUT.PUT_LINE('Category Code: ' || category_code || ', Total Price: ' || total_price);
     END LOOP;
-    CLOSE purchase_data;
-END;  --c
+    
+    CLOSE purchase_cursor;
+END;
 /
+
 
 DECLARE
     start_date DATE := TO_DATE('01/01/2005', 'DD/MM/YYYY');
